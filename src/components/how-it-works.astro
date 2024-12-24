@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+const steps = [
+  {
+    title: "Create Your AI Landing Page",
+    description: "Simply log in, select a template, and customize the content around the specific problems you solve. No coding required.",
+    icon: "bx:bxs-edit",
+  },
+  {
+    title: "Visitor Interaction",
+    description: "Prospective clients describe their challenge directly on the landing page. Our LLM-based AI bot dives in, offering immediate, relevant solutions.",
+    icon: "bx:bxs-message-rounded-dots",
+  },
+  {
+    title: "Automated Solution & Qualification",
+    description: "While delivering those preliminary answers, the AI is also scoring and qualifying leads—determining who's ready for more specialized services.",
+    icon: "bx:bxs-bot",
+  },
+  {
+    title: "Upsell to Premium Services",
+    description: "When the AI recognizes a strong prospect, it invites them to book a consultation or sign up for your paid offerings—automatically and effortlessly.",
+    icon: "bx:bxs-badge-dollar",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0" id="how-it-works">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    How It Works
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Four simple steps to transform your lead generation process
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-2 mt-16 gap-16">
+  {
+    steps.map((item, index) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+          <span class="text-white text-sm font-bold">{index + 1}</span>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div> 
