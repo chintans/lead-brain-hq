@@ -1,46 +1,53 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
+import fetchApi from "../../lib/strapi";
+import type Article from "../../interfaces/article";
+import marked from "marked";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  const articles = await fetchApi<Article[]>({
+    endpoint: "articles",
+    wrappedByKey: "data",
+  });
+
+  return articles.map((article) => ({
+    params: { slug: article.attributes.slug },
+    props: article,
   }));
 }
 
 // Get the entry directly from the prop on render
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+type Props = Article;
+const article = Astro.props;
+const Content = marked.parse(article.attributes.content);
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={article.attributes.title}>
   <Container>
     <div class="mx-auto max-w-3xl mt-14">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-        {entry.data.category}
+        {article.attributes.category}
       </span>
       <h1
         class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
-        {entry.data.title}
+        {article.attributes.title}
       </h1>
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
         <span class="text-gray-400">
-          {entry.data.author}
+          {article.attributes.author}
         </span>
         <span class="text-gray-400">•</span>
         <time
           class="text-gray-400"
-          datetime={entry.data.publishDate.toISOString()}>
-          {entry.data.publishDate.toDateString()}
+          datetime={article.attributes.publishedAt.toISOString()}>
+          {article.attributes.publishedAt.toDateString()}
         </time>
         <span class="text-gray-400 hidden md:block">•</span>
         <div class="w-full md:w-auto flex flex-wrap gap-3">
           {
-            entry.data.tags.map((tag) => (
+            article.attributes.tags.map((tag) => (
               <span class="text-sm text-gray-500">#{tag}</span>
             ))
           }
@@ -49,7 +56,7 @@ const { Content } = await entry.render();
     </div>
 
     <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
-      <Content />
+      <article set:html={Content}></article>
     </div>
     <div class="text-center mt-8">
       <a
