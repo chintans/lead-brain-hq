@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import fetchApi from "../../lib/strapi";
 import type Article from "../../interfaces/article";
-import marked from "marked";
+import { marked } from "marked";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -56,7 +56,7 @@ const Content = marked.parse(article.attributes.content);
     </div>
 
     <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
-      <article set:html={Content}></article>
+      <article set:html={Content} />
     </div>
     <div class="text-center mt-8">
       <a
