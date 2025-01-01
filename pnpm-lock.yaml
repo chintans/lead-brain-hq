@@ -59,10 +59,6 @@ importers:
       zod-to-json-schema:
         specifier: 3.24.1
         version: 3.24.1(zod@3.23.8)
-    devDependencies:
-      '@types/marked':
-        specifier: ^6.0.0
-        version: 6.0.0
 
 packages:
 
@@ -878,10 +874,6 @@ packages:
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
-
-  '@types/marked@6.0.0':
-    resolution: {integrity: sha512-jmjpa4BwUsmhxcfsgUit/7A9KbrC48Q0q8KvnY107ogcjGgTFDlIL3RpihNpx2Mu1hM4mdFQjoVc4O6JoGKHsA==}
-    deprecated: This is a stub types definition. marked provides its own type definitions, so you do not need this installed.
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
@@ -3609,10 +3601,6 @@ snapshots:
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.2
-
-  '@types/marked@6.0.0':
-    dependencies:
-      marked: 15.0.4
 
   '@types/mdast@4.0.4':
     dependencies:
