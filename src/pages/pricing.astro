@@ -6,38 +6,43 @@ import PricingCard from "@components/pricing.astro";
 
 const pricing = [
   {
-    name: "Personal",
-    price: "Free",
+    name: "Basic",
+    price: {
+      monthly: "$20",
+      annual: "$16",
+      discount: "20%",
+      original: "$24",
+    },
     popular: false,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "Up to 3 AI-Powered Landing Pages",
+      "Basic Analytics & Reporting",
+      "Standard Support",
+      "Access to Conversion Funnel Builder",
+      "Email & Knowledge Base Support",
+      "Freemium Lead Qualification",
     ],
     button: {
       text: "Get Started",
-      link: "/",
+      link: "#",
     },
   },
   {
-    name: "Startup",
+    name: "Growth",
     price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
+      monthly: "$50",
+      annual: "$40",
+      discount: "20%",
+      original: "$60",
     },
     popular: true,
     features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
+      "Up to 10 AI-Powered Landing Pages",
+      "Advanced Funnel Customization",
+      "Priority Support (Email + Chat)",
+      "Integration with Popular CRMs",
+      "Detailed Analytics & Reporting",
+      "Higher Token Allocation",
     ],
     button: {
       text: "Get Started",
@@ -49,12 +54,12 @@ const pricing = [
     price: "Custom",
     popular: false,
     features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
+      "Unlimited AI-Powered Landing Pages",
       "Dedicated Account Manager",
-      "24/7 Phone Support",
+      "White-Label Options",
+      "Premium Support",
+      "Custom Feature Development",
+      "Custom Integrations",
     ],
     button: {
       text: "Contact us",
@@ -67,14 +72,26 @@ const pricing = [
 <Layout title="Pricing">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Pricing</Fragment>
+      <Fragment slot="title">Simple & Predictable Pricing</Fragment>
       <Fragment slot="desc">
-        Simple & Predictable pricing. No Surprises.
+        Choose the plan that's right for you with our transparent pricing structure. Save 20% with annual billing.
       </Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
       {pricing.map((item) => <PricingCard plan={item} />)}
+    </div>
+
+    <div class="mt-20 text-center">
+      <h3 class="text-2xl font-bold mb-4">SEO Booster Add-On</h3>
+      <p class="text-lg text-slate-600 mb-8">
+        Boost your visibility with our SEO add-on package for $100/month ($80/month with annual billing)
+      </p>
+      <ul class="text-slate-600 mb-8 inline-block text-left">
+        <li class="mb-2">✓ Focus on 5 top keywords of your choice</li>
+        <li class="mb-2">✓ Generate optimized content</li>
+        <li>✓ Improve search engine visibility</li>
+      </ul>
     </div>
   </Container>
 </Layout>
